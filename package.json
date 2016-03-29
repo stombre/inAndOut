@@ -1,0 +1,24 @@
+{
+  "name": "in-and-out",
+  "version": "1.0.0",
+  "description": "inAndOut is a tool for communicate with your nodeJS apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stombre/inAndOut.git"
+  },
+  "keywords": [
+    "server",
+    "admin",
+    "tool"
+  ],
+  "author": "Guillaume 'stombre' DAIX",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/stombre/inAndOut/issues"
+  },
+  "homepage": "https://github.com/stombre/inAndOut#readme"
+}
