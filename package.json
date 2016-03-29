@@ -1,6 +1,6 @@
 {
   "name": "in-and-out",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "inAndOut is a tool for communicate with your nodeJS apps",
   "main": "index.js",
   "scripts": {
@@ -13,6 +13,7 @@
   "keywords": [
     "server",
     "admin",
+    "I/O",
     "tool"
   ],
   "author": "Guillaume 'stombre' DAIX",

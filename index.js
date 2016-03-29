@@ -1,4 +1,4 @@
-/**
- * Created by guil_ on 29/03/2016.
- */
+
+exports.pipe = require('./libs/pipe');
+exports.addCommands = require('./libs/commands');
 
