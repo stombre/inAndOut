@@ -7,9 +7,9 @@ function inject(storage) {
   };
 
   function addCommands(commands) {
-    const commandsList = [].concat(commands.inAndOut(service));
-    for(var commandName in commandsList) {
-      storage.commands[commandName] = commandsList;
+    const commandsList = commands.init(service);
+    for(let commandName in commandsList) {
+      storage.commands[commandName] = commandsList[commandName];
     }
   }
 

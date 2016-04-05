@@ -4,30 +4,38 @@ const EventEmitter = require('events');
 
 
 function inject(storage) {
+  const runExpession = require('../interpreter')(storage);
 
   function generatePipe(pipeService) {
     let dataBuffer = new EventEmitter();
     const service = {
-      listen: function() {
-        return new Promise(function(resolve) {
-          dataBuffer.on('output', function(data) {
-            resolve(data);
-          });
+      listen: function(handler) {
+        dataBuffer.on('output', function(data) {
+          handler(data.err, data.msg);
         });
       },
       write: function(msg) {
         dataBuffer.emit('input', msg);
       }
     };
-    const pipe = pipeService.inAndOut(service);
+    const pipe = pipeService.run(service);
+    dataBuffer.on('input', function(data) {
+      runExpession(data)
+        .then(function(msg) {
+          const output = {
+            msg,
+            err: null
+          };
+          dataBuffer.emit('output', output);
+        })
+        .catch(function(err) {
+          const output = {
+            err
+          };
+          dataBuffer.emit('output', output);
+        })
+    });
     return {
-      listen: function listen() {
-        return new Promise(function(resolve) {
-          dataBuffer.on('input', function(data) {
-            resolve(data);
-          });
-        });
-      },
       write: function write(msg) {
         dataBuffer.emit('output', msg);
       }
